@@ -32,3 +32,4 @@ app.register_blueprint(posts_bp, url_prefix='/posts')
 @app.route('/')
 def index():
     return 'Hola mundo'
+    #return render_template('index.html')
