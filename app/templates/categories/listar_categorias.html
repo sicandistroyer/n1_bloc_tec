@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block title%} Blog de Noticias{% endblock %}
+{% block content%}
+<div class="columns">
+    <div class="column is-offset-3 is-6">
+        <!-- <a href="" class="button is-success"><i class="fa-solid fa-plus"></i> &nbsp;
+            Agregar categoria</a> --><br><br>
+        <div class="card">
+            <header class="card-header">
+                <p class="card-header-title">Gestión de Categorias</p>
+            </header>
+            <div class="card-content">
+                <table class="table is-fullwidth is-hoverable is-striped">
+                    <thead>
+                        <tr>
+                            <th>Categoria</th>
+                            <th>Opciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for category in categories %}
+                        <tr>
+                            <td>{{ category.name }}</td>
+                            <td>
+                                <div class="field is-grouped">
+
+                                    <!-- <a href=""
+                                        class="button is-small is-link is-outlined"><i
+                                            class="fa-solid fa-pen-to-square"></i></a>
+                                    <a href=""
+                                        class="button is-small is-danger is-outlined"><i
+                                            class="fa-solid fa-trash"></i></a> -->
+
+
+                                </div>
+
+                            </td>
+                        </tr>
+
+                        {% endfor %}
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+{% endblock%}
