@@ -12,45 +12,40 @@ def listar_categorias():
     categories = Category.query.all()
     return render_template('categories/listar_categorias.html', categories=categories)
 
-'''
-#Ruta /post crear un nuevo post
-@posts_bp.route('/new', methods=['GET','POST'])
-def add_post():
+
+#Ruta /post crear un nueva categoria
+@categories_bp.route('/new', methods=['GET','POST'])
+def add_category():
     if request.method == 'POST':
-        title = request.form['title']
-        content = request.form['content']
-        category_id = request.form.get('category_id')
-        new_post = Post(title=title, content=content, category_id=category_id)
-        db.session.add(new_post)
+        name = request.form['name']
+        new_category = Category(name=name)
+        db.session.add(new_category)
         db.session.commit()
 
-        return redirect(url_for('posts.listar_posts'))
+        return redirect(url_for('categories.listar_categorias'))
     
     #Aqui sigue si es GET
-    categories = Category.query.all()
-    return render_template('posts/create_post.html', categories=categories)
+    return render_template('categories/create_categoria.html')
+
 
 #Actualizar post
-@posts_bp.route('/update/<int:id>', methods=['GET','POST'])
-def update_post(id):
-    post = Post.query.get(id)
+@categories_bp.route('/update/<int:id>', methods=['GET','POST'])
+def update_category(id):
+    category = Category.query.get(id)
     if request.method == 'POST':
-        post.title = request.form['title']
-        post.category_id = request.form['category_id']
-        post.content = request.form['content']
+        category.name = request.form['name']
         db.session.commit()
-        return redirect(url_for('posts.listar_posts'))
+        return redirect(url_for('categories.listar_categorias'))
     
     categories = Category.query.all()
-    return render_template('posts/update_post.html', post=post, categories=categories)
+    return render_template('categories/update_category.html', category=category)
 
 #Eliminar post
-@posts_bp.route('/delete/<int:id>')
-def delete_post(id):
-    post = Post.query.get(id)
-    if post:
-        db.session.delete(post)
+@categories_bp.route('/delete/<int:id>')
+def delete_category(id):
+    category = Category.query.get(id)
+    if category:
+        db.session.delete(category)
         db.session.commit()
-    return redirect(url_for('posts.listar_posts'))
+    return redirect(url_for('categories.listar_categorias'))
     
-'''

@@ -5,6 +5,8 @@
     <div class="column is-offset-3 is-6">
         <a href="{{ url_for('posts.add_post') }}" class="button is-success"><i class="fa-solid fa-plus"></i> &nbsp;
             Agregar noticia</a>
+        <a href="{{ url_for('index') }}" class="button is-danger"><i class="fa-solid fa-arrow-left"></i> &nbsp;
+                Regresar</a>
         <br><br>
         {% for post in posts %}
         <div class="card">
